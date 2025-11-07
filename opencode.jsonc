@@ -11,6 +11,10 @@
       "type": "local",
       "command": ["uvx", "mcp-server-time"],
     },
+    "cargo": {
+      "type": "local",
+      "command": ["cargo-mcp", "serve"],
+    },
   },
   "agent": {
     "build": {
