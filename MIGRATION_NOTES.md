@@ -11,13 +11,11 @@ Copy the contents of this folder into `~/.config/opencode` on your workstation. 
     marvin-system.md
   instructions/
     *.md
-  command/
-    analyze.md
-    model.md
-    architect.md
-    plan.md
-    tdd.md
+  agent/
+    *.md (specialist agent prompts)
 ```
+
+**Note**: The `command/` directory has been removed (see Facilitator Commands section below).
 
 Run `/init` inside OpenCode after copying so it registers the new instructions and agents.
 
@@ -44,8 +42,25 @@ The generated `opencode.jsonc` enables the same memento and time MCP servers tha
 
 Add more subagents later by mirroring the pattern in `opencode.jsonc` and pointing to new prompt files if you want lighter-weight instructions.
 
-## Facilitator Commands
-The `/analyze`, `/model`, `/architect`, `/plan`, and `/tdd` commands now live in `command/` with the original facilitator copy. Each command runs as a subtask of the build agent so the main session stays clean.
+## Facilitator Commands (DEPRECATED - Removed 2025-11-07)
+
+**BREAKING CHANGE**: The facilitator command files have been removed. Marvin now facilitates directly.
+
+**Old Architecture (Broken):**
+- User types `/tdd`
+- Launched a "TDD facilitator" subagent
+- That subagent did implementation work instead of coordinating
+
+**New Architecture (Fixed):**
+- User types `/tdd`
+- Marvin (main conversation agent) DIRECTLY enters TDD facilitation mode
+- Marvin coordinates by launching implementing agents (red-tdd-tester, green-implementer, etc.)
+- Clear separation: Marvin coordinates, specialists implement
+
+**What Changed:**
+- Deleted: `command/tdd.md`, `command/analyze.md`, `command/model.md`, `command/plan.md`, `command/architect.md`
+- Updated: `prompts/marvin-system.md` now contains facilitation workflows
+- Marvin knows how to facilitate each phase directly without intermediate subagents
 
 ## Instructions Library
 All process handbooks from `~/.claude/processes` were copied to `instructions/` and internal references now point to `~/.config/opencode/instructions/...`. Agents should lazy-load only the documents they need.
