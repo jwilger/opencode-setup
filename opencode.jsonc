@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-opus-4-1",
+  "model": "anthropic/claude-sonnet-4-5",
   "instructions": ["./AGENTS.md", "./instructions/*.md"],
   "mcp": {
     "memento": {
@@ -16,7 +16,7 @@
     "build": {
       "description": "Marvin build agent with full tool access",
       "mode": "primary",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./prompts/marvin-system.md}",
       "temperature": 0,
       "tools": {
@@ -28,7 +28,7 @@
     "plan": {
       "description": "Read-only Marvin for planning and analysis",
       "mode": "primary",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./prompts/marvin-system.md}",
       "temperature": 0,
       "tools": {
@@ -40,7 +40,7 @@
     "research-specialist": {
       "description": "Performs deep research on topics without modifying system state. Records findings in knowledge graph memory and returns summaries with memory node references to preserve context in calling agent.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/research-specialist.md}",
       "temperature": 0.2,
       "tools": {
@@ -112,7 +112,7 @@
     "event-modeling-architect": {
       "description": "Event modeling specialist focused on the technical architecture. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/event-modeling-architect.md}",
       "temperature": 0,
       "tools": {
@@ -124,7 +124,7 @@
     "event-modeling-pm": {
       "description": "Event modeling specialist focused on the business perspective. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/event-modeling-pm.md}",
       "temperature": 0,
       "tools": {
@@ -136,7 +136,7 @@
     "story-planner": {
       "description": "Story planning specialist. Breaks work into thin vertical slices, coordinates beads issue creation, and partners with the main conversation and user to capture plans.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/story-planner.md}",
       "temperature": 0,
       "tools": {
@@ -196,7 +196,7 @@
     "requirements-analyst": {
       "description": "Writes requirements documentation directly using Write/Edit tools. Helps define WHAT software should do and WHY through collaborative documentation with user.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/requirements-analyst.md}",
       "temperature": 0,
       "tools": {
@@ -208,7 +208,7 @@
     "adr-writer": {
       "description": "Writes ADR documentation directly using Write/Edit tools. Helps analyze decisions and structure rationale with user through collaborative documentation.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/adr-writer.md}",
       "temperature": 0,
       "tools": {
@@ -220,7 +220,7 @@
     "design-system-architect": {
       "description": "Writes STYLE_GUIDE.md documentation directly using Write/Edit tools. Creates design system using Atomic Design methodology, focusing on design patterns and visual specifications.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/design-system-architect.md}",
       "temperature": 0,
       "tools": {
@@ -232,7 +232,7 @@
     "architecture-synthesizer": {
       "description": "Writes ARCHITECTURE.md documentation directly using Write/Edit tools. Synthesizes accepted ADRs into cohesive system architecture. Called when ADR status changes to/from \"accepted\".",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/architecture-synthesizer.md}",
       "temperature": 0,
       "tools": {
@@ -436,7 +436,7 @@
     "memory-intelligence-agent": {
       "description": "Manages complex knowledge graph operations for storing decisions, recalling patterns, searching memories, and traversing relationships. Uses temporal anchoring, semantic search, and graph traversal. Supports multi-step knowledge construction - launch multiple times for complex operations. Use for complex memory operations beyond simple create/retrieve.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/memory-intelligence-agent.md}",
       "temperature": 0,
       "tools": {
@@ -472,7 +472,7 @@
     "ux-consultant": {
       "description": "UX collaboration specialist. Evaluates experience quality, updates design docs, and partners with the main conversation and user on improvements.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/ux-consultant.md}",
       "temperature": 0,
       "tools": {
@@ -484,7 +484,7 @@
     "story-architect": {
       "description": "Story architecture specialist. Evaluates feasibility, dependency ordering, and constraints while updating planning artifacts with the user and main conversation.",
       "mode": "subagent",
-      "model": "anthropic/claude-opus-4-1",
+      "model": "anthropic/claude-sonnet-4-5",
       "prompt": "{file:./agent/story-architect.md}",
       "temperature": 0,
       "tools": {

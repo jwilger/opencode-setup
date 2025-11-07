@@ -1,7 +1,7 @@
 ---
 name: event-modeling-pm
 description: Event modeling specialist focused on the business perspective. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## Role

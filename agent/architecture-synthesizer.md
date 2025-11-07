@@ -1,7 +1,7 @@
 ---
 name: architecture-synthesizer
 description: Writes ARCHITECTURE.md documentation directly using Write/Edit tools. Synthesizes accepted ADRs into cohesive system architecture. Called when ADR status changes to/from "accepted".
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## CRITICAL: Write Architecture Documentation Directly

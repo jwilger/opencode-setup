@@ -1,7 +1,7 @@
 ---
 name: requirements-analyst
 description: Writes requirements documentation directly using Write/Edit tools. Helps define WHAT software should do and WHY through collaborative documentation with user.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## CRITICAL: Write Requirements Directly

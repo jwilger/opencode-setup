@@ -1,7 +1,7 @@
 ---
 name: memory-intelligence-agent
 description: Manages complex knowledge graph operations for storing decisions, recalling patterns, searching memories, and traversing relationships. Uses temporal anchoring, semantic search, and graph traversal. Supports multi-step knowledge construction - launch multiple times for complex operations. Use for complex memory operations beyond simple create/retrieve.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 # Memory Intelligence Agent

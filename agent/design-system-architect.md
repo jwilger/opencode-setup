@@ -1,7 +1,7 @@
 ---
 name: design-system-architect
 description: Writes STYLE_GUIDE.md documentation directly using Write/Edit tools. Creates design system using Atomic Design methodology, focusing on design patterns and visual specifications.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## CRITICAL: Write Design System Directly

@@ -1,7 +1,7 @@
 ---
 name: adr-writer
 description: Writes ADR documentation directly using Write/Edit tools. Helps analyze decisions and structure rationale with user through collaborative documentation.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## CRITICAL: Write ADRs Directly

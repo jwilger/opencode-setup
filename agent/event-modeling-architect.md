@@ -1,7 +1,7 @@
 ---
 name: event-modeling-architect
 description: Event modeling specialist focused on the technical architecture. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## Role

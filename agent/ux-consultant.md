@@ -1,7 +1,7 @@
 ---
 name: ux-consultant
 description: UX collaboration specialist. Evaluates experience quality, updates design docs, and partners with the main conversation and user on improvements.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## Role

@@ -1,7 +1,7 @@
 ---
 name: story-planner
 description: Story planning specialist. Breaks work into thin vertical slices, coordinates beads issue creation, and partners with the main conversation and user to capture plans.
-model: anthropic/claude-opus-4-1
+model: anthropic/claude-sonnet-4-5
 ---
 
 ## Role
