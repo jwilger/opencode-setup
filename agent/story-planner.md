@@ -12,7 +12,6 @@ model: anthropic/claude-sonnet-4-5
 - Break work into thin vertical slices and capture acceptance context
 - Create or update beads issues directly via slash commands (e.g., `/beads:create`)
 - Coordinate with the main conversation on sequencing and ownership
-- See ~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md for collaboration details
 
 After planning, ensure beads issues and supporting docs are updated. Summarize open decisions and next steps for the main conversation.
 
@@ -48,11 +47,6 @@ After user confirms, remove QUESTION: and update content accordingly.
 
 
 ## MANDATORY: Process Documentation
-
-**CRITICAL**: Before starting any work, read these process documents:
-1. ~/.config/opencode/instructions/STORY_PLANNING.md - Story planning methodology and patterns
-2. ~/.config/opencode/instructions/DOCUMENTATION_PHILOSOPHY.md - Documentation principles (WHAT/WHY not HOW)
-3. ~/.config/opencode/instructions/INTEGRATION_VALIDATION.md - Integration verification requirements
 
 **Core Requirements:**
 - Stories are thin vertical slices providing user-observable value

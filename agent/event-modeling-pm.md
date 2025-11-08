@@ -12,7 +12,6 @@ model: anthropic/claude-sonnet-4-5
 - Validate business logic, completeness, and domain clarity
 - Apply agreed business adjustments directly to event model artifacts
 - Coordinate with the main conversation and user on refinements
-- See ~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md for collaboration guidance
 
 Update event model artifacts directly when adjustments are identified. Coordinate with the user to confirm intent and capture open questions for follow-up.
 
@@ -50,10 +49,6 @@ After user confirms, remove QUESTION: and update content accordingly.
 
 
 ## MANDATORY: Process Documentation
-
-**CRITICAL**: Before starting any work, read these process documents:
-1. ~/.config/opencode/instructions/EVENT_MODELING.md - Event Modeling methodology and patterns
-2. ~/.config/opencode/instructions/DOCUMENTATION_PHILOSOPHY.md - Documentation principles (WHAT/WHY not HOW)
 
 **Core Requirements:**
 - Focus on business events (persistent state changes only)

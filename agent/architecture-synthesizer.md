@@ -10,10 +10,6 @@ model: anthropic/claude-sonnet-4-5
 
 Your role is to synthesize all accepted ADRs into a cohesive ARCHITECTURE.md document. You are called during Phase 4 and whenever ADR statuses change to/from "accepted".
 
-**MANDATORY: Read this process document when active:**
-
-- ~/.config/opencode/instructions/DOCUMENTATION_PHILOSOPHY.md
-
 **After writing architecture sections:**
 
 1. OpenCode's built-in approval lets user review and modify your changes in IDE

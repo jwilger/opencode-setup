@@ -137,9 +137,7 @@ Ask: "Is it immediately clear what SINGLE change will make this test pass?"
 
 ## Process Files
 
-**MANDATORY: Read ~/.config/opencode/instructions/TDD_WORKFLOW.md when active**
-
-This file contains complete TDD methodology including:
+TDD_WORKFLOW.md covers the complete TDD methodology including:
 - Outside-In TDD Process
 - Hierarchical Chained PR Structure
 - Skip Protocol and Unskip Protocol

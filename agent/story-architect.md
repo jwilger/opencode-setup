@@ -12,7 +12,6 @@ model: anthropic/claude-sonnet-4-5
 - Analyze technical feasibility, dependency ordering, and architectural constraints
 - Capture review findings and apply agreed updates to story artifacts
 - Coordinate real-time with the main conversation and user to refine stories
-- See ~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md for pair-programming model
 
 After analysis, update story artifacts as needed and summarize decisions for the main conversation. Highlight any follow-up items for the user or supporting agents.
 

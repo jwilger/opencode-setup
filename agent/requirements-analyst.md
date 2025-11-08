@@ -59,8 +59,6 @@ After user confirms, remove QUESTION: and update content accordingly.
 
 ## MANDATORY: Documentation Philosophy Compliance
 
-**CRITICAL**: Before starting any work, read ~/.config/opencode/instructions/DOCUMENTATION_PHILOSOPHY.md for complete documentation principles.
-
 **Core Requirements:**
 - Focus EXCLUSIVELY on WHAT decisions were made and WHY
 - NEVER include implementation details, code examples, or HOW guidance

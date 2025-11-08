@@ -144,7 +144,7 @@
       "description": "Event modeling specialist focused on the technical architecture. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/event-modeling-architect.md}",
+      "prompt": "{file:./instructions/COLLABORATION_PROTOCOLS.md}\n{file:./instructions/EVENT_MODELING.md}\n{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./agent/event-modeling-architect.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -156,7 +156,7 @@
       "description": "Event modeling specialist focused on the business perspective. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/event-modeling-pm.md}",
+      "prompt": "{file:./instructions/COLLABORATION_PROTOCOLS.md}\n{file:./instructions/EVENT_MODELING.md}\n{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./agent/event-modeling-pm.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -168,7 +168,7 @@
       "description": "Story planning specialist. Breaks work into thin vertical slices, coordinates beads issue creation, and partners with the main conversation and user to capture plans.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/story-planner.md}",
+      "prompt": "{file:./instructions/COLLABORATION_PROTOCOLS.md}\n{file:./instructions/STORY_PLANNING.md}\n{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./instructions/INTEGRATION_VALIDATION.md}\n{file:./agent/story-planner.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -180,7 +180,7 @@
       "description": "Creates Rust domain types with nutype to maximize compile-time safety and make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.",
       "mode": "subagent",
       "model": "openai/gpt-5-codex",
-      "prompt": "{file:./agent/rust-domain-model-expert.md}",
+      "prompt": "{file:./instructions/DOMAIN_MODELING.md}\n{file:./agent/rust-domain-model-expert.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -192,7 +192,7 @@
       "description": "Creates Python domain types with Pydantic to maximize validation and make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.",
       "mode": "subagent",
       "model": "openai/gpt-5-codex",
-      "prompt": "{file:./agent/python-domain-model-expert.md}",
+      "prompt": "{file:./instructions/DOMAIN_MODELING.md}\n{file:./agent/python-domain-model-expert.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -204,7 +204,7 @@
       "description": "Creates TypeScript domain types using branded types and discriminated unions to make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.",
       "mode": "subagent",
       "model": "openai/gpt-5-codex",
-      "prompt": "{file:./agent/typescript-domain-model-expert.md}",
+      "prompt": "{file:./instructions/DOMAIN_MODELING.md}\n{file:./agent/typescript-domain-model-expert.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -216,7 +216,7 @@
       "description": "Creates Elixir domain types using structs with enforced keys and pattern matching to make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.",
       "mode": "subagent",
       "model": "openai/gpt-5-codex",
-      "prompt": "{file:./agent/elixir-domain-model-expert.md}",
+      "prompt": "{file:./instructions/DOMAIN_MODELING.md}\n{file:./agent/elixir-domain-model-expert.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -228,7 +228,7 @@
       "description": "Writes requirements documentation directly using Write/Edit tools. Helps define WHAT software should do and WHY through collaborative documentation with user.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/requirements-analyst.md}",
+      "prompt": "{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./agent/requirements-analyst.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -240,7 +240,7 @@
       "description": "Writes ADR documentation directly using Write/Edit tools. Helps analyze decisions and structure rationale with user through collaborative documentation.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/adr-writer.md}",
+      "prompt": "{file:./instructions/ADR_TEMPLATE.md}\n{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./agent/adr-writer.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -252,7 +252,7 @@
       "description": "Writes STYLE_GUIDE.md documentation directly using Write/Edit tools. Creates design system using Atomic Design methodology, focusing on design patterns and visual specifications.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/design-system-architect.md}",
+      "prompt": "{file:./instructions/DESIGN_SYSTEM.md}\n{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./agent/design-system-architect.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -264,7 +264,7 @@
       "description": "Writes ARCHITECTURE.md documentation directly using Write/Edit tools. Synthesizes accepted ADRs into cohesive system architecture. Called when ADR status changes to/from \"accepted\".",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/architecture-synthesizer.md}",
+      "prompt": "{file:./instructions/DOCUMENTATION_PHILOSOPHY.md}\n{file:./agent/architecture-synthesizer.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -515,7 +515,7 @@
       "description": "UX collaboration specialist. Evaluates experience quality, updates design docs, and partners with the main conversation and user on improvements.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/ux-consultant.md}",
+      "prompt": "{file:./instructions/COLLABORATION_PROTOCOLS.md}\n{file:./agent/ux-consultant.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -527,7 +527,7 @@
       "description": "Story architecture specialist. Evaluates feasibility, dependency ordering, and constraints while updating planning artifacts with the user and main conversation.",
       "mode": "subagent",
       "model": "anthropic/claude-sonnet-4-5",
-      "prompt": "{file:./agent/story-architect.md}",
+      "prompt": "{file:./instructions/COLLABORATION_PROTOCOLS.md}\n{file:./agent/story-architect.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -539,7 +539,7 @@
       "description": "Writes failing tests following Kent Beck-style TDD. Writes test code directly using Write/Edit tools.",
       "mode": "subagent",
       "model": "openai/gpt-5-codex",
-      "prompt": "{file:./agent/red-tdd-tester.md}",
+      "prompt": "{file:./instructions/TDD_WORKFLOW.md}\n{file:./agent/red-tdd-tester.md}",
       "temperature": 0,
       "tools": {
         "write": true,
@@ -551,7 +551,7 @@
       "description": "Writes minimal implementations to make failing tests pass following Kent Beck's TDD. Writes implementation code directly using Write/Edit tools.",
       "mode": "subagent",
       "model": "openai/gpt-5-codex",
-      "prompt": "{file:./agent/green-implementer.md}",
+      "prompt": "{file:./instructions/TDD_WORKFLOW.md}\n{file:./agent/green-implementer.md}",
       "temperature": 0,
       "tools": {
         "write": true,

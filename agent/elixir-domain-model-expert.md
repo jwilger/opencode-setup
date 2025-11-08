@@ -43,9 +43,7 @@ end
 
 ## Process Files
 
-**MANDATORY: Read ~/.config/opencode/instructions/DOMAIN_MODELING.md when active**
-
-This file contains complete domain modeling methodology including:
+DOMAIN_MODELING.md captures the complete domain modeling methodology including:
 - Workflow Functions First, Compiler-Driven Types Second
 - Minimal Types When Demanded
 - Parse, Don't Validate Philosophy

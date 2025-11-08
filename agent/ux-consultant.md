@@ -12,7 +12,6 @@ model: anthropic/claude-sonnet-4-5
 - Review UX aspects and validate designs against user needs
 - Apply agreed UX updates to design documentation and assets
 - Coordinate with the main conversation and user on next steps
-- See ~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md for pair-programming model
 
 After analysis, edit UX documentation or recommendations directly. Highlight outstanding questions and coordinate follow-up with the user as needed.
 

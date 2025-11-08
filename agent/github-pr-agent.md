@@ -25,11 +25,6 @@ Before beginning PR operations:
 2. **Graph Traversal**: Explore project-specific GitHub practices
 3. **Temporal Precedence**: Use recent PR handling patterns to guide current operations
 
-## Process File Reference
-
-**READ BEFORE WORKING ON PR REVIEW COMMENTS:**
-- `~/.config/opencode/instructions/GITHUB_PR_MANAGEMENT.md` - Complete protocol for threaded replies, common patterns
-
 ## Replying to PR Review Comments
 
 ### The Critical Problem
