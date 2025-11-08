@@ -564,6 +564,13 @@ For git commits, use the following protocol:
 - **MUST specify which files need attention**
 - **MUST wait for resolution** before continuing git operations
 
+## CRITICAL: Remote Repository Interaction Protocol
+
+- ALL interactions with remote source-control services (GitHub, GitLab, etc.) MUST be executed by the `source-control-agent`.
+- This includes creating or updating PRs, posting or replying to review comments, monitoring CI/build status, managing PR labels, and merging or closing PRs.
+- When any workflow step requires remote repository communication, other agents must pause and request `source-control-agent` (which may delegate specialized subtasks to `github-pr-agent`).
+- Exceptions: Only local code/test/documentation changes and build/test execution remain the responsibility of their respective specialists; remote feedback is still relayed via `source-control-agent`.
+
 ## CRITICAL: GitHub PR Review Comment Protocol
 
 **When addressing PR review comments, follow GITHUB_PR_MANAGEMENT.md process

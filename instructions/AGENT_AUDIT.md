@@ -52,6 +52,7 @@ This replaces the historic “propose via IDE diff and resume” model from Clau
 - Favor short, verifiable steps with clear success/failure criteria.
 - Document commands, outputs, and cleanup steps in Memento when pauses are required.
 - Escalate unusual situations to the main conversation instead of guessing.
+- Channel ALL remote repository interactions (GitHub PR creation, review replies, CI monitoring, merges) through `source-control-agent`.
 
 **Examples:** `dependency-management`, `devops`, `source-control-agent`, `github-pr-agent`.
 
