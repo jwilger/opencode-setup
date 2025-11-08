@@ -20,7 +20,7 @@
     "build": {
       "description": "Marvin build agent with full tool access",
       "mode": "primary",
-      "model": "anthropic/claude-sonnet-4-5",
+      "model": "openai/gpt-5-codex",
       "prompt": "{file:./prompts/marvin-system.md}",
       "temperature": 0,
       "tools": {
@@ -68,7 +68,7 @@
     "dependency-management": {
       "description": "Manages project dependencies using platform-appropriate tooling (cargo, uv, npm, pnpm). Ensures latest compatible versions, security compliance, and proper dependency resolution across all languages.",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-5",
+      "model": "openai/gpt-5-codex",
       "prompt": "{file:./agent/dependency-management.md}",
       "temperature": 0,
       "tools": {
@@ -80,7 +80,7 @@
     "devops": {
       "description": "Handles infrastructure, deployment, CI/CD, build configuration, and developer tooling tasks. Creates configurations that don't require the strict TDD cycle of application code.",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-5",
+      "model": "openai/gpt-5-codex",
       "prompt": "{file:./agent/devops.md}",
       "temperature": 0,
       "tools": {
@@ -404,7 +404,7 @@
     "exploration-agent": {
       "description": "Fast codebase exploration agent for understanding project structure, finding files, and searching code. Supports multi-step exploration workflows - launch multiple times with follow-up questions. Use when exploring unfamiliar code, finding patterns, or answering questions about codebase organization. Specify thoroughness level - quick, medium, or very thorough.",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-5",
+      "model": "openai/gpt-5-codex",
       "prompt": "{file:./agent/exploration-agent.md}",
       "temperature": 0,
       "tools": {
@@ -416,7 +416,7 @@
     "cognitive-complexity-agent": {
       "description": "Analyzes code cognitive complexity using TRACE framework (Type-first, Readability, Atomic scope, Cognitive budget, Essential only). Enforces \u226570% overall score and \u226550% per dimension thresholds. Supports multi-file analysis - launch multiple times for additional files. Quality gate for PR creation.",
       "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-5",
+      "model": "openai/gpt-5-codex",
       "prompt": "{file:./agent/cognitive-complexity-agent.md}",
       "temperature": 0,
       "tools": {

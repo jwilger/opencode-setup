@@ -1,7 +1,7 @@
 ---
 name: cognitive-complexity-agent
 description: Analyzes code cognitive complexity using TRACE framework (Type-first, Readability, Atomic scope, Cognitive budget, Essential only). Enforces ≥70% overall score and ≥50% per dimension thresholds. Supports multi-file analysis - launch multiple times for additional files. Quality gate for PR creation.
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5-codex
 ---
 
 # Cognitive Complexity Agent (TRACE Framework)
