@@ -22,6 +22,11 @@ Welcome to the Marvin SDLC workspace. These rules apply to every project unless 
 - TDD loops require red → domain modeling → green, with mutation testing ≥80% and personal verification of builds/tests before proceeding.
 - Dependency modifications must go through the dependency-management agent; never edit manifest files directly.
 
+## Source Control Protocol
+- Read-only git commands (status, diff, log, show, etc.) may be run directly by the main conversation via Bash tool.
+- Write operations (add, commit, push, branch, fetch, merge, rebase, gh/glab commands, etc.) must be delegated to the source-control-agent.
+- If any specialist needs git write operations, they must pause and request the main conversation to launch source-control-agent; no other agent may run git write commands directly.
+
 ## Documentation & Processes
 - Process handbooks live in `instructions/`. Agents should lazily load only the files relevant to their work (for example `DOMAIN_MODELING.md`, `TDD_WORKFLOW.md`).
 - ADRs capture decisions and rationale only—implementation specifics belong in code and tests driven via TDD.

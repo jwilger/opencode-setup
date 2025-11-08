@@ -2,6 +2,33 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "anthropic/claude-sonnet-4-5",
   "instructions": ["./AGENTS.md", "./instructions/*.md"],
+  "permission": {
+    "bash": {
+      "git *": "deny",
+      "gh": "deny",
+      "gh *": "deny",
+      "glab": "deny",
+      "glab *": "deny",
+      "git status": "allow",
+      "git status *": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git show": "allow",
+      "git show *": "allow",
+      "git rev-parse": "allow",
+      "git rev-parse *": "allow",
+      "git describe": "allow",
+      "git describe *": "allow",
+      "git cat-file": "allow",
+      "git cat-file *": "allow",
+      "git ls-files": "allow",
+      "git ls-files *": "allow",
+      "git remote -v": "allow",
+      "git remote -v *": "allow"
+    }
+  },
   "mcp": {
     "memento": {
       "type": "local",
@@ -470,8 +497,19 @@
       "tools": {
         "write": true,
         "edit": true,
-        "bash": true,
+        "bash": true
       },
+      "permission": {
+        "bash": {
+          "git": "allow",
+          "git *": "allow",
+          "gh": "allow",
+          "gh *": "allow",
+          "glab": "allow",
+          "glab *": "allow"
+        }
+      },
+
     },
     "ux-consultant": {
       "description": "UX collaboration specialist. Evaluates experience quality, updates design docs, and partners with the main conversation and user on improvements.",
