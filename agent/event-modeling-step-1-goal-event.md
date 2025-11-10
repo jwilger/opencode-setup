@@ -1,7 +1,15 @@
 ---
 name: event-modeling-step-1-goal-event
 description: Writes event model documentation directly using Write/Edit tools. Step 1 - Identifies goal events.
-model: openai/gpt-5-codex
+model: openai/gpt-5-mini
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Event Model Directly

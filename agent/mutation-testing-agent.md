@@ -2,6 +2,11 @@
 name: mutation-testing-agent
 description: Executes mutation testing to verify test suite quality and reports mutation score. Enforces ≥80% mutation score requirement. Supports multi-module testing - launch multiple times for additional modules. Works with cargo-mutants for Rust and similar tools for other languages. Quality gate for PR creation.
 model: openai/gpt-5-codex
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 # Mutation Testing Agent
@@ -232,13 +237,13 @@ Observations:
 
 ## Integration with Quality Gates
 
-**Called by source-control-agent before PR creation:**
+**Triggered by `/pr:create` after TRACE passes:**
 
-1. source-control-agent requests mutation testing (after TRACE analysis passes)
-2. You execute mutation tests on changed files
-3. Return PASS/FAIL status with detailed report
-4. If FAIL: source-control-agent pauses and requests test improvements from red-tdd-tester
-5. If PASS: source-control-agent continues to PR creation
+1. `/pr:create` launches this agent once TRACE succeeds.
+2. Execute mutation testing on the relevant files/modules.
+3. Return PASS/FAIL status with detailed report and recommended follow-up.
+4. If FAIL: instruct the main conversation to engage red-tdd-tester/green-implementer to strengthen tests before rerunning `/pr:create`.
+5. If PASS: `/pr:create` proceeds to create the PR/MR.
 
 ## Task Completion Protocol
 

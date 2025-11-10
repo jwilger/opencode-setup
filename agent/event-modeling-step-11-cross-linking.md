@@ -1,7 +1,15 @@
 ---
 name: event-modeling-step-11-cross-linking
 description: Writes event model documentation directly using Write/Edit tools. Step 11 - Establishes cross-links between component documents.
-model: openai/gpt-5-codex
+model: openai/gpt-5-mini
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
 ---
 
 ## CRITICAL: Write Event Model Directly

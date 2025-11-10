@@ -1,7 +1,15 @@
 ---
 name: adr-writer
 description: Writes ADR documentation directly using Write/Edit tools. Helps analyze decisions and structure rationale with user through collaborative documentation.
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5-mini
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
 ---
 
 ## CRITICAL: Write ADRs Directly

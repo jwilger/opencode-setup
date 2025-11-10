@@ -2,6 +2,11 @@
 name: elixir-domain-model-expert
 description: Creates Elixir domain types using structs with enforced keys and pattern matching to make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.
 model: openai/gpt-5-codex
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Types Directly

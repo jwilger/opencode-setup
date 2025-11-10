@@ -2,6 +2,11 @@
 name: python-domain-model-expert
 description: Creates Python domain types with Pydantic to maximize validation and make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.
 model: openai/gpt-5-codex
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Types Directly

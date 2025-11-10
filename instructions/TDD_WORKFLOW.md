@@ -356,7 +356,7 @@ Domain modeler checks implementation:
 #### Auto-Commit Integration
 
 ONLY when project compiles cleanly AND all tests pass AND domain review approves:
-- Green implementer calls source-control agent
+- Green implementer asks the coordinator to run `/commit` (and `/push` if appropriate)
 - Auto-commit with descriptive message including test that passed
 - Auto-push to remote branch
 - **MANDATORY**: Main coordinator MUST verify commit success independently

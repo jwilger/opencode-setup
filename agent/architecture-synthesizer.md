@@ -1,7 +1,15 @@
 ---
 name: architecture-synthesizer
 description: Writes ARCHITECTURE.md documentation directly using Write/Edit tools. Synthesizes accepted ADRs into cohesive system architecture. Called when ADR status changes to/from "accepted".
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5-mini
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Architecture Documentation Directly

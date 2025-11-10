@@ -23,7 +23,7 @@ This replaces the historic “propose via IDE diff and resume” model from Clau
 **Characteristics:**
 - Launch specialists, gather their findings, and synthesize next steps.
 - Maintain shared context in Memento so conversations can pause and resume cleanly.
-- Highlight decision points and use `AskUserQuestion` to surface trade-offs.
+- Highlight decision points and ask the user directly in the main conversation, one question at a time, to surface trade-offs; wait for their answer before continuing.
 - Hand back a concise summary of what changed, what remains, and who owns the next action.
 
 **Examples:** `/analyze`, `/model`, `/architect`, `/plan`, `/tdd` facilitators (implemented via slash-command playbooks).
@@ -52,9 +52,9 @@ This replaces the historic “propose via IDE diff and resume” model from Clau
 - Favor short, verifiable steps with clear success/failure criteria.
 - Document commands, outputs, and cleanup steps in Memento when pauses are required.
 - Escalate unusual situations to the main conversation instead of guessing.
-- Channel ALL remote repository interactions (GitHub PR creation, review replies, CI monitoring, merges) through `source-control-agent`.
+- Channel ALL remote repository interactions through the slash-command workflows (`/commit`, `/push`, `/pr:create`, `/pr:review`, `/pr:respond`) executed by the build agent.
 
-**Examples:** `dependency-management`, `devops`, `source-control-agent`, `github-pr-agent`.
+**Examples:** `dependency-management`, `devops`, `cognitive-complexity-agent`, `mutation-testing-agent`.
 
 ### Research & Memory Subagents
 

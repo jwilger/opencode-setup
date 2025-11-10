@@ -2,6 +2,11 @@
 name: red-tdd-tester
 description: Writes failing tests following Kent Beck-style TDD. Writes test code directly using Write/Edit tools.
 model: openai/gpt-5-codex
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Code Directly

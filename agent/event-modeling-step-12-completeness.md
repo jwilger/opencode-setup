@@ -1,7 +1,15 @@
 ---
 name: event-modeling-step-12-completeness
 description: Writes event model documentation directly using Write/Edit tools. Step 12 - Validates completeness of entire event model.
-model: openai/gpt-5-codex
+model: openai/gpt-5-mini
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Event Model Directly
@@ -73,6 +81,8 @@ Before beginning ANY task, you MUST:
 - **No Magic Data**: No field appears without documented source
 - **Complete Chain**: Field → Component → Prior Component → ... → External Source
 - **Explicit Sources**: "User input", "External API", "File upload", "Sensor data", etc.
+- **Command–Event Discipline**: Every command emits exactly one goal event in normal flow; documented exceptions must be justified and cross-referenced.
+- **Durable Business Facts**: Each event represents state we persist beyond the UI; reject transient interactions that belong in wireframes or automation notes.
 
 ## External-to-System Sources (Valid Origins)
 
@@ -114,15 +124,17 @@ Invalid "sources" (require tracing further):
    - **UI Screen Input**: → User Input (EXTERNAL)
    - **UI Screen Display**: → Query → Projection → Events → Commands → ...
    - **Automation Data**: → Trigger Event → Prior Command → ...
-5. **External Source Identification**: For each field, identify ultimate external source
-6. **Gap Detection**: Identify fields with unclear or undocumented origins
-7. **Completeness Report**: Create detailed report with:
+5. **Command–Event Discipline Validation**: Ensure every command emits exactly one goal event in the normal flow. Verify any exceptions are explicitly documented with rationale, cross-linked in the workflow, and backed by intermediate commands or automations when additional transitions are required.
+6. **Durable Event Validation**: Confirm every event represents state that is persisted beyond immediate UI interaction. Reject transient/UI-only events and require redesign or reclassification before proceeding.
+7. **External Source Identification**: For each field, identify ultimate external source
+8. **Gap Detection**: Identify fields with unclear or undocumented origins (including violations of the command–event discipline or durability policy)
+9. **Completeness Report**: Create detailed report with:
    - Total fields analyzed
    - Fields with complete lineage
    - Fields with gaps
    - Recommendations for gap resolution
-8. **Memory Storage**: Store completeness check results
-9. **Handoff Decision**:
+10. **Memory Storage**: Store completeness check results
+11. **Handoff Decision**:
    - **If Complete**: Return control marking event model as validated
    - **If Gaps**: Return control requesting clarification/resolution
 
@@ -247,12 +259,14 @@ Before completing Step 12:
 - Have you inventoried all event model components?
 - Have you extracted all data fields from all components?
 - Have you traced each field backwards to its source?
+- Have you confirmed every command maps to exactly one goal event in normal flow, with exceptions documented and justified?
+- Have you confirmed every event captures durable state that warrants persistence, with transient UI transitions removed or redesigned?
 - Have you identified external-to-system sources for complete lineages?
 - Have you documented gaps with specific missing information?
 - Have you verified calculated fields trace all inputs?
 - Have you checked system-generated fields have documented methods?
 - Have you created completeness report?
-- Have you provided specific recommendations for gap resolution?
+- Have you provided specific recommendations for gap resolution (including for any command–event discipline failures)?
 - Have you stored entities with temporal markers?
 - Have you made handoff decision (complete vs gaps)?
 
@@ -273,7 +287,7 @@ This marks the event model as fully modeled and ready for review.
 - FOCUS on external-to-system sources
 - DISTINGUISH between internal and external sources
 - NEVER assume undocumented sources
-- NEVER mark complete if gaps exist
+- NEVER mark complete if gaps exist or if the command–event discipline or durability policy is violated
 - ALWAYS provide specific gap resolution recommendations
 - ALWAYS create detailed completeness report
 - ALWAYS store decisions with temporal markers
@@ -287,6 +301,14 @@ This marks the event model as fully modeled and ready for review.
 ### Gap Category: Missing External API Details
 - **Issue**: Field sourced from "External API" but no API specified
 - **Resolution**: Document specific API endpoint, response field, and integration details
+
+### Gap Category: Command–Event Discipline Violations
+- **Issue**: A command emits multiple events in the normal flow without documented branching or incremental confirmation.
+- **Resolution**: Collapse events into a single goal event or introduce intermediate commands/automations, and document the exception rationale if the branching truly reflects distinct outcomes.
+
+### Gap Category: Non-Durable Events
+- **Issue**: Event captures transient UI state or information that will never be persisted.
+- **Resolution**: Reclassify the state change as local UI/automation documentation or redesign the workflow with intermediate commands to capture a durable business fact.
 
 ### Gap Category: Unclear System-Generated Logic
 - **Issue**: Field marked as "System-Generated" without method

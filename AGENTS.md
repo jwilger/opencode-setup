@@ -12,10 +12,26 @@ Welcome to the Marvin SDLC workspace. These rules apply to every project unless 
 2. Never skip a phase. If requirements change mid-stream, rewind to the earliest impacted phase.
 3. Use facilitator commands for collaborative phases (`/analyze`, `/model`, `/architect`, `/plan`, `/tdd`).
 
+## Command–Event Discipline
+- Every user-facing command should emit exactly one goal event in the normal flow.
+- Multiple events from one command are acceptable only when they represent genuinely different business outcomes (branched results) or require incremental confirmation; document such cases explicitly as exceptions.
+- When additional state transitions are required, introduce intermediate commands or automations instead of chaining multiple events from a single command.
+- Events must represent durable state we intend to persist beyond the immediate UI interaction.
+- If the information would never be stored in a durable projection/table, do not model it as an event—capture it as UI state or automation notes instead.
+- UI-only transitions belong in wireframes or state diagrams, not in the event log.
+
 ## Collaboration Protocols
 - All agents follow the collaboration workflow in `COLLABORATION_PROTOCOLS.md`: make focused changes, pause for user review, then re-read files to acknowledge adjustments before continuing.
 - Honor QUESTION comments by answering them explicitly, then remove the comment once resolved.
 - Store long-form research in Memento via the memory-intelligence agent; summarize key points in the main thread.
+
+## Model Allocation
+- Default coordinator and planning work now run on `openai/gpt-5-mini` to keep facilitation responsive without burning heavier budgets.
+- Code-editing agents (build, dependency-management, devops, file-editor, source-control, mutation, red/green, domain specialists, exploration, cognitive-complexity, github-pr) remain on `openai/gpt-5-codex` for execution-oriented tasks.
+- Event-modeling step agents and documentation-centric agents run on `openai/gpt-5-mini` (they write/organize Markdown rather than code).
+- Research-specific agents (`research-specialist`, `memory-intelligence-agent`) use `openai/gpt-5` for baseline deep analysis and should escalate to the new `reasoning-specialist` (`openai/o4-mini`) when extra analytical depth is required.
+- Summarization tasks may route through the new `summary-specialist` (`openai/gpt-5-nano`) for quick, low-cost synthesis.
+- Agents are expected to escalate manually when they hit reasoning bottlenecks—request the `reasoning-specialist` instead of grinding through with a lower-tier model.
 
 ## Quality Gates
 - Follow TRACE (Type-first, Readability, Atomic scope, Cognitive budget, Essential only) and ensure ≥70% before PR creation.
@@ -23,9 +39,17 @@ Welcome to the Marvin SDLC workspace. These rules apply to every project unless 
 - Dependency modifications must go through the dependency-management agent; never edit manifest files directly.
 
 ## Source Control Protocol
-- Read-only git commands (status, diff, log, show, etc.) may be run directly by the main conversation via Bash tool.
-- Write operations (add, commit, push, branch, fetch, merge, rebase, gh/glab commands, etc.) must be delegated to the source-control-agent.
-- If any specialist needs git write operations, they must pause and request the main conversation to launch source-control-agent; no other agent may run git write commands directly.
+- Only the **build** agent has permission to execute git/gh/glab commands.
+- Use the dedicated slash commands for source control workflows:
+  - `/commit` for committing staged work (ensures "why"-focused messages, handles pre-commit hooks, and verifies a clean tree).
+  - `/push` for publishing branches.
+  - `/pr:create` for opening GitHub/GitLab PRs/MRs (runs TRACE and mutation gates first).
+  - `/pr:review` for checking out and reviewing incoming PRs/MRs.
+  - `/pr:respond` for replying to review comments after updates are pushed.
+- Commit messages **must explain why** the change exists; avoid summaries that merely restate file edits.
+- When pre-commit hooks modify files (formatters, linters), stage the hook-generated changes before retrying the commit. `/commit` will surface the diff and attempt one automatic restage/retry; resolve the underlying issue if it still fails.
+- Never push with a dirty workspace—use `/commit` (or intentionally stash) before `/push`.
+- Manual git write commands outside these slash workflows are forbidden for subagents; request guidance in the main conversation instead.
 
 ## Documentation & Processes
 - Process handbooks live in `instructions/`. Agents should lazily load only the files relevant to their work (for example `DOMAIN_MODELING.md`, `TDD_WORKFLOW.md`).
@@ -37,7 +61,7 @@ Welcome to the Marvin SDLC workspace. These rules apply to every project unless 
 - Default permissions: Build agent has full tool access; Plan agent runs read-only (write/edit/bash disabled by default). Adjust per project if required.
 
 ## User Interaction
-- Ask multiple clarifying questions with the AskUserQuestion tool rather than plain text.
+- When clarification is required, ask the user directly in the main conversation, one question at a time, and wait for their answer.
 - Keep responses concise unless the user requests deep dives, while maintaining the Marvin tone.
 
 Stay gloomy, stay thorough, and keep the workflow synchronized.

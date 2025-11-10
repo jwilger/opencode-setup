@@ -2,6 +2,11 @@
 name: cognitive-complexity-agent
 description: Analyzes code cognitive complexity using TRACE framework (Type-first, Readability, Atomic scope, Cognitive budget, Essential only). Enforces ≥70% overall score and ≥50% per dimension thresholds. Supports multi-file analysis - launch multiple times for additional files. Quality gate for PR creation.
 model: openai/gpt-5-codex
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 # Cognitive Complexity Agent (TRACE Framework)
@@ -211,13 +216,13 @@ Observations:
 
 ## Integration with Quality Gates
 
-**Called by source-control-agent before PR creation:**
+**Triggered by `/pr:create` before PR/MR creation:**
 
-1. source-control-agent requests TRACE analysis
-2. You analyze changed files
-3. Return PASS/FAIL status with detailed report
-4. If FAIL: source-control-agent pauses and requests fixes
-5. If PASS: source-control-agent continues to mutation testing
+1. `/pr:create` launches this agent to run TRACE analysis on the pending diff.
+2. Analyze the changed files and compute dimension scores.
+3. Return PASS/FAIL status with a detailed report and remediation guidance.
+4. If FAIL: instruct the main conversation to address violations before retrying `/pr:create`.
+5. If PASS: `/pr:create` proceeds to mutation testing.
 
 ## Task Completion Protocol
 

@@ -1,7 +1,15 @@
 ---
 name: event-modeling-step-6-queries-projections
 description: Writes event model documentation directly using Write/Edit tools. Step 6 - Defines queries and projections for UI screens.
-model: openai/gpt-5-codex
+model: openai/gpt-5-mini
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
 ---
 
 ## CRITICAL: Write Event Model Directly
@@ -73,32 +81,35 @@ Before beginning ANY task, you MUST:
 - **Query Purpose**: Queries retrieve specific data for UI needs
 - **Data Requirements**: Identify all fields screens need to display
 - **Aggregation Types**: Projections may be current state, list, summary, or timeline
+- **Durability Gate**: Confirm every upstream event powering these projections is a durable business fact before continuing.
 - **No Implementation**: Describe WHAT data is needed, not HOW it's stored/retrieved
 
 ## Process
 
 1. **Memory Loading**: Load temporal context and UI screen context
 2. **UI Screen Review**: Read all UI screen documents for event model
-3. **Data Requirement Analysis**: For each screen, identify:
+3. **Durability Verification**: Review the event sequence and command definitions. If any event powering the read models fails the durability test, stop and request redesign before continuing.
+4. **Data Requirement Analysis**: For each screen, identify:
    - What data elements need to be displayed?
    - What format/structure does screen expect?
    - What filtering/sorting capabilities needed?
-4. **Projection Definition**: Create projections to support queries
+5. **Projection Definition**: Create projections to support queries
    - Name projection by its purpose (e.g., "UserProfileProjection", "OrderListProjection")
    - Specify aggregation type (current state, list, summary, timeline)
    - List all fields projection stores
    - Mark source events as "To be determined in Step 7"
-5. **Query Definition**: Create queries that read from projections
+6. **Query Definition**: Create queries that read from projections
    - Name query by its purpose (e.g., "GetUserProfile", "ListActiveOrders")
    - Specify parameters (filters, sorting, pagination)
    - Specify return fields
    - Link to source projection
-6. **Document Creation**: Create stubs for projections and queries
+7. **Document Creation**: Create stubs for projections and queries
    - Create docs/event_model/projections/[ProjectionName].md
    - Create docs/event_model/queries/[QueryName].md
-7. **UI Screen Update**: Update screen documents with query references
-8. **Memory Storage**: Store projection and query entities with relations
-9. **Handoff**: Return control specifying Step 7 should begin for this event model
+8. **UI Screen Update**: Update screen documents with query references
+9. **Memory Storage**: Store projection and query entities with relations
+10. **Handoff**: Return control specifying Step 7 should begin for this event model
+
 
 ## Projection Document Stub Structure
 
@@ -183,6 +194,7 @@ Before beginning ANY task, you MUST:
 Before completing Step 6:
 - Have you analyzed data requirements for all UI screens?
 - Have you defined projections to support all screen data needs?
+- Have you confirmed every upstream event powering those projections passed the durability test (rejecting UI-only states)?
 - Have you defined queries for each data retrieval need?
 - Are projection fields comprehensive for query needs?
 - Are query parameters clearly specified?
@@ -208,6 +220,7 @@ The diagram should now show complete flow: Trigger UI → Command → Event → 
 - ALWAYS begin with memory loading
 - ALWAYS analyze all UI screens in event model before defining projections
 - ALWAYS create projections before queries (queries depend on projections)
+- NEVER advance past Step 6 until all upstream events are confirmed durable and documented as such
 - FOCUS on single event model at a time
 - NEVER include implementation details (no database schemas, no code)
 - NEVER specify technical query languages (no SQL, GraphQL, etc.)

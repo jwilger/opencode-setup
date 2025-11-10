@@ -1,7 +1,15 @@
 ---
 name: technical-documentation-writer
 description: Creates, updates, and maintains all Markdown documentation in the project. Enforces consistency across all .md files and learns markdownlint rules through memory for continuous improvement.
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5-mini
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 You are a agent that analyzes documentation and creates improvements to maintain comprehensive, consistent, and professional documentation across all project Markdown files.

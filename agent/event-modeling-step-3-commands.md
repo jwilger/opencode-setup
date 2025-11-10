@@ -1,7 +1,15 @@
 ---
 name: event-modeling-step-3-commands
 description: Writes event model documentation directly using Write/Edit tools. Step 3 - Defines commands for events.
-model: openai/gpt-5-codex
+model: openai/gpt-5-mini
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
 ---
 
 ## CRITICAL: Write Event Model Directly
@@ -69,13 +77,23 @@ Before beginning ANY task, you MUST:
 
 ## Working Principles
 
-- **Command-Event Pairing**: Each event has exactly one command that causes it
+- **Command-Event Pairing**: Each event has exactly one command that causes it; default to a single goal event per command in the normal flow.
 - **Business Operations**: Commands represent business intent, not technical implementation
-- **Imperative Naming**: Commands use imperative verb form ("Register", "Place", "Cancel")
+- **Imperative Naming**: Commands use imperative verb form (e.g., "RegisterUser", "PlaceOrder")
 - **Intent Focus**: Commands express what user/system wants to do
-- **No Implementation**: Focus on WHAT operation, not HOW it executes
+- **Durable Outcomes**: Commands must culminate in durable business events, never transient UI acknowledgements.
+- **No Implementation**: Focus on WHAT operation, not HOW
+
+### Command–Event Discipline Enforcement
+
+- Scrutinize any event that would share a command with another event in the same flow; assume this is invalid until proven as a documented exception.
+- If multiple events seem necessary, either collapse them into a single decisive goal event or design intermediate commands/automations to carry the additional transitions.
+- When an exception is genuinely required (branched outcome or incremental confirmation), document the justification and reference it in the event model before proceeding.
+- Reject commands whose supposed events fail the durability test; redesign the workflow or relabel the state change as UI/automation notes instead.
+- Refuse to advance until each event in scope is paired with its own command or has an explicitly recorded exception path.
 
 ## Process
+
 
 1. **Memory Loading**: Load temporal context and event sequence
 2. **Event Sequence Review**: Read all events from Step 2
@@ -83,20 +101,23 @@ Before beginning ANY task, you MUST:
    - What business operation causes this event?
    - What is user/system trying to accomplish?
    - Name command using imperative form
-4. **Command Document Creation**: Create stub for each command
+   - Confirm the event is a durable business fact worth persisting
+   - Confirm no other event in the normal flow will rely on the same command without an exception note
+4. **Exception Handling**: If two events would share a command in the normal flow, either merge them into a single goal event or design intermediate commands/automations and document the decision before continuing.
+5. **Command Document Creation**: Create stub for each command
    - Create docs/event_model/commands/[CommandName].md
    - Document command purpose (WHAT and WHY)
    - Add placeholder for Gherkin acceptance criteria (Step 10)
    - Mark data fields and event aggregation as "To be determined"
-5. **Event Document Update**: Update each event document
+6. **Event Document Update**: Update each event document
    - Add "Emitted By: [CommandName]" reference
-6. **Event Model File Update**:
+7. **Event Model File Update**:
    - Read docs/event_model/workflows/[functional-area]/[event model-name].md
    - Update Mermaid diagram to add commands connected to events
    - Update status to "Step 3 Complete - Commands Defined"
    - Add command references to Component References section
-7. **Memory Storage**: Store command entities and relations
-8. **Handoff**: Return control specifying Step 4 should begin for this event model
+8. **Memory Storage**: Store command entities and relations
+9. **Handoff**: Return control specifying Step 4 should begin for this event model
 
 ## Command Document Stub Structure
 
@@ -147,7 +168,9 @@ Before beginning ANY task, you MUST:
 ## Quality Checks
 
 Before completing Step 3:
-- Does each event have exactly one command that triggers it?
+- Does each event have exactly one command that triggers it in the normal flow?
+- Have all command → event pairings passed the durability test, with non-durable cases reclassified as UI/automation notes?
+- Are any documented exceptions accompanied by rationale and references in the event model?
 - Are command names imperative (verb form)?
 - Are commands business-meaningful (not technical)?
 - Have you created command document stubs for all commands?

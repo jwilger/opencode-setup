@@ -1,7 +1,15 @@
 ---
 name: event-modeling-step-2-event-sequence
 description: Writes event model documentation directly using Write/Edit tools. Step 2 - Defines event sequences working backwards from goal.
-model: openai/gpt-5-codex
+model: openai/gpt-5-mini
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
 ---
 
 ## CRITICAL: Write Event Model Directly
@@ -73,7 +81,22 @@ Before beginning ANY task, you MUST:
 - **Persistent Events Only**: Each event is a permanent state change
 - **Linear Sequence**: Events in chronological order (but discovered backwards)
 - **Complete Coverage**: All significant state changes identified
+- **Durability First**: Every event must represent state we intend to persist beyond the immediate interaction.
 - **No Implementation**: Focus on WHAT events occur, not HOW
+
+### Command–Event Discipline Enforcement
+
+- Default to one decisive goal event per expected command outcome.
+- When multiple events appear in normal flow, challenge whether they truly represent different business outcomes or incremental confirmations.
+- If additional state transitions are required, plan to introduce intermediate commands or automations rather than chaining events from one command.
+- Document any necessary exceptions immediately so downstream steps can reference them.
+
+### Durable Events Enforcement
+
+- Evaluate every proposed event against the durability test: would we persist this fact in an event store or projection table?
+- Reject UI-only or transient states; capture them in wireframes, state diagrams, or automation notes instead of events.
+- If a state change matters only within a single command execution, redesign the workflow (introduce intermediate commands/automations) before proceeding.
+- Refuse to advance until all candidate events are confirmed as durable business facts.
 
 ## Process
 
@@ -87,6 +110,7 @@ Before beginning ANY task, you MUST:
    - Name using past tense (e.g., "ValidationCompleted", "PaymentAuthorized")
    - Verify it's persistent (not ephemeral UI state)
    - Verify it's business-meaningful
+   - Apply the durability test; if it fails, capture the scenario as UI/automation notes and redesign before continuing
 5. **Event Document Creation**: Create stub for each new event
    - Create docs/event_model/events/[EventName].md
    - Document what state change occurred and why
@@ -144,6 +168,8 @@ Before completing Step 2:
 - Have you avoided ephemeral UI state?
 - Is the sequence complete (no missing steps)?
 - Are events in chronological order?
+- For each event, did it pass the durability test (persisted business fact) and have any rejections redirected to UI or automation documentation?
+- For each event, is there a plausible one-to-one command relationship, with exceptions explicitly noted?
 - Have you created event document stubs for all new events?
 - Have you updated the event model document?
 - Have you stored entities with temporal markers?

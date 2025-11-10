@@ -74,6 +74,7 @@ Event Modeling is a collaborative design methodology that captures system behavi
 - **Business decision**: Represents judgment or decision made by responsible party
 - **Triggers consequences**: May unblock dependencies, trigger automation, update projections
 - **Persistent state**: Survives system restart, recorded indefinitely
+- **Durable storage**: Represents data you are willing to store in an event stream or projection table; otherwise it is not an event.
 
 ### Key Distinction
 
@@ -311,15 +312,18 @@ Multiple smaller documents make it easier for:
 - Navigation and cross-referencing between related concepts
 - Each workflow to grow without bloating functional area index files
 
-## Command-to-Event Relationship
+## Command–Event Discipline
 
-**CRITICAL RULE: One Command → One Event (typically)**
+**CRITICAL POLICY: Every user-facing command emits exactly one goal event in the normal flow.**
 
-- A command represents a business intention/request
-- A command loads prior events (event sourcing), validates business rules, and either:
-  - **Success**: Emits ONE business event representing what happened
-  - **Failure**: Returns an error (usually NOT an event)
-- Failure events are RARE - only if another process needs to react to the failure
+- The success path of a command is proven by a single business event representing the business fact created by that command.
+- Failures return errors (or, in rare cases, emit a distinct failure event only when downstream automation requires it). Do not model validation steps or data gathering as events.
+- Multiple events from one command are acceptable only when they represent genuinely different business outcomes (a branching flow) or when the domain demands incremental confirmation. Document those cases explicitly in the workflow with rationale and references.
+- When additional state transitions are needed, introduce intermediate commands or automations that each emit their own goal event instead of chaining events from a single command.
+- Events must represent durable business facts we intend to persist long after the triggering UI interaction.
+- If you would never store the information in an event stream, projection, or table, do not model it as an event—capture it as UI state, automation logic, or validation notes instead.
+- UI-only transitions belong in wireframes, state diagrams, or trigger descriptions, never in the event log.
+- Steps 2, 3, 6, and 12 of the event modeling process enforce this discipline; the workflow must pause and be corrected if the check fails.
 
 **Data Gathering and Validation are NOT Events:**
 - Commands read event streams internally (not separate events)

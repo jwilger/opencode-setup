@@ -1,7 +1,15 @@
 ---
 name: event-modeling-pm
 description: Event modeling specialist focused on the business perspective. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5-mini
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
+max_output_tokens: 3000
+parallel_tool_calls: false
+temperature: 0
 ---
 
 ## Role

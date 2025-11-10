@@ -32,11 +32,11 @@ If the user adds a `QUESTION:` comment inside a file:
 2. Answer the question explicitly in your response.
 3. Remove or revise the comment as part of your next edit so the file stays clean.
 
-## Using the AskUserQuestion Tool
+## Asking Questions to the User
 
-- Present 2–4 well-defined options when user decisions are required.
-- Capture trade-offs succinctly so the user can choose quickly.
-- Wait for the tool response and incorporate the decision before proceeding.
+- Ask exactly one clear question at a time in the main conversation.
+- When relevant, present 2–4 concise options and their trade-offs.
+- Wait for the user’s answer and incorporate the decision before proceeding.
 
 ## When to Pause
 
@@ -56,6 +56,6 @@ If the user adds a `QUESTION:` comment inside a file:
 Before handing control back to the main conversation:
 
 - ✅ You recorded what changed and why.
-- ✅ All outstanding questions are tracked (via AskUserQuestion or Memento).
+- ✅ All outstanding questions are tracked (tracked in the conversation or stored in Memento).
 - ✅ Files you touched were re-read after the user’s edits.
 - ✅ The next action for the user or next agent is clearly stated.

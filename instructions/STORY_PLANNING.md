@@ -4,8 +4,8 @@
 
 **Agents**: story-planner ↔ story-architect ↔ ux-consultant
 **Process**: Collaborative creation until consensus
-**Output**: Beads issues with prioritized user stories. docs/PLANNING.md contains SDLC process guidance only.
-**Gate**: All three agents agree beads issues are complete, well-defined, and properly prioritized
+**Output**: Prioritized stories/issues captured in the project tracker (or docs). docs/PLANNING.md contains SDLC process guidance only.
+**Gate**: All three agents agree the stories/issues are complete, well-defined, and properly prioritized
 
 **CRITICAL WORKFLOW NOTE**: User stories are DERIVED from EVENT_MODEL.md (Phase 2), NOT from REQUIREMENTS_ANALYSIS.md (Phase 1). Requirements define WHAT/WHY at a high level. Event modeling defines HOW the system responds to events. Stories decompose event model vertical slices into implementable increments. This is why stories come in Phase 6, AFTER event modeling, architecture decisions, and design system definition.
 
@@ -18,20 +18,20 @@
 **Story Planning Agents (story-planner, story-architect, ux-consultant):**
 - Analyze event models and recommend story breakdowns
 - Review stories for technical feasibility and UX coherence
-- Create or update beads issues and story artifacts directly once changes are agreed
+- Create or update stories/issues and story artifacts directly once changes are agreed
 - See `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md` for collaboration details
 
 **Main Conversation Facilitates:**
 - Pair-programming with the user on story creation and refinement
 - The collaboration workflow for story documentation edits
 - The `QUESTION:` comment mechanism for inline questions
-- Beads issue creation/updates based on user collaboration
+- Project issue tracker updates (if configured) based on user collaboration
 - Acknowledgment of user changes with rationale or counterarguments
 - A co-creator posture between user and agents
 
 **User Participates:**
 - Reviews all story recommendations
-- Modifies proposed stories directly in beads or IDE
+- Modifies proposed stories directly in the tracker (if configured) or IDE
 - Adds `QUESTION:` comments inline for clarification
 - Makes final decisions on story scope and priorities
 - Collaborates iteratively on story refinement
@@ -98,37 +98,9 @@ Main conversation answers questions inline and removes QUESTION: prefix once res
    - "Works in tests" is NECESSARY but NOT SUFFICIENT for story completion
    - See INTEGRATION_VALIDATION.md for complete protocol
 
-## Story Tracking with Beads
+## Story Tracking
 
-**IMPORTANT**: Stories are tracked as beads issues, NOT in docs/PLANNING.md. The PLANNING.md document contains SDLC process guidance only.
-
-**NOTE**: We use the beads CLI tool (via slash commands), NOT the beads MCP server.
-
-### Beads CLI Commands for Story Management
-
-- **Create story**: `/beads:create`
-- **Update story**: `/beads:update <issue-id>`
-- **List stories**: `/beads:list`
-- **Show details**: `/beads:show <issue-id>`
-- **Find ready work**: `/beads:ready`
-- **Check blockers**: `/beads:blocked`
-- **Set dependencies**: `/beads:dep <from-id> <to-id>`
-- **Close story**: `/beads:close <issue-id>`
-- **Project stats**: `/beads:stats`
-
-### Beads Issue Fields (Story Content)
-
-Stories are tracked as beads issues with these fields:
-
-- **title**: User-focused story title
-- **description**: WHAT user capability and WHY it matters (NO HOW)
-- **issue_type**: feature, bug, task, epic, or chore
-- **priority**: 1 (highest), 2 (medium), 3 (lowest)
-- **status**: open, in_progress, blocked, closed
-- **acceptance**: Gherkin acceptance criteria (inline or reference to docs)
-- **design**: Design notes, architectural decisions, ADR references, integration points
-- **deps**: Array of issue IDs this story depends on
-- **assignee**: Who's working on it (optional)
+Stories may be tracked in a project issue tracker (GitHub/GitLab/Jira/etc.) or in repository docs. Use the tracker if configured; otherwise, maintain a simple `docs/PLANNING.md` section with a table of stories and their status. Keep stories out of REQUIREMENTS_ANALYSIS.md; that document covers WHAT/WHY, not work tracking.
 
 ## Story Format (Content for Beads Fields)
 
@@ -269,11 +241,11 @@ And the unsent message is preserved in the input field
 
 ## Prioritization Protocol
 
-1. **story-planner creates initial prioritized beads issues (business risk vs. value)**
+1. **story-planner drafts an initial prioritized list of stories/issues (business risk vs. value)**
    - Evaluate each story's business value
    - Assess risk of NOT implementing each story
    - Consider user impact and urgency
-   - Create beads issues with initial priority values (1=highest, 2=medium, 3=lowest)
+   - Record initial priority values (1=highest, 2=medium, 3=lowest) in the tracker or planning doc
 
 2. **story-architect and ux-consultant consent to implementation order**
    - story-architect reviews for implementation dependencies
@@ -281,7 +253,7 @@ And the unsent message is preserved in the input field
    - Both agents must consent to the proposed order
 
 3. **Agents may suggest reprioritization based on technical dependencies or design constraints**
-   - Technical dependencies set via `/beads:dep` (e.g., authentication blocks user profiles)
+   - Capture technical dependencies between stories (e.g., authentication blocks user profiles)
    - Design constraints may suggest different priority values
    - All three agents discuss and reach consensus on priorities and dependencies
 
@@ -290,4 +262,4 @@ And the unsent message is preserved in the input field
    - Dependencies ensure technically feasible implementation order
    - Design coherence and good UX progression maintained
    - All three agents must reach consensus before proceeding
-   - Use `/beads:ready` to verify work can begin on priority stories
+   - Verify work can begin on the highest‑priority stories (no unresolved blockers)

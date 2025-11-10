@@ -2,6 +2,11 @@
 name: typescript-domain-model-expert
 description: Creates TypeScript domain types using branded types and discriminated unions to make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.
 model: openai/gpt-5-codex
+mode: subagent
+tools:
+  write: true
+  edit: true
+  bash: true
 ---
 
 ## CRITICAL: Write Types Directly
