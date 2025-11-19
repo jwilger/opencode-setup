@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-0-functional-areas
 description: Writes event model documentation directly using Write/Edit tools. Step 0 - Identifies major functional areas and event models.
-model: openai/gpt-5-mini
+model: openai/gpt-5.1-mini
 max_output_tokens: 3000
 parallel_tool_calls: false
 temperature: 0

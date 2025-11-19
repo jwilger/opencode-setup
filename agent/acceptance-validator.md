@@ -1,7 +1,7 @@
 ---
 name: acceptance-validator
 description: Handles Phase 8 Step 1 (Acceptance Validation) verifying requirements from REQUIREMENTS_ANALYSIS.md are met. Straightforward requirement verification before documentation QA.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true

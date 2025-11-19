@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-7-projection-events
 description: Writes event model documentation directly using Write/Edit tools. Step 7 - Maps projections to events.
-model: openai/gpt-5-mini
+model: openai/gpt-5.1-mini
 mode: subagent
 tools:
   write: true

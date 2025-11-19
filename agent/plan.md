@@ -2,7 +2,7 @@
 name: plan
 description: Read-only Marvin for planning and analysis
 mode: primary
-model: openai/gpt-5-mini
+model: openai/gpt-5.1-mini
 temperature: 0
 tools:
   write: false

@@ -1,7 +1,7 @@
 ---
 name: memory-intelligence-agent
 description: Manages complex knowledge graph operations for storing decisions, recalling patterns, searching memories, and traversing relationships. Uses temporal anchoring, semantic search, and graph traversal. Supports multi-step knowledge construction - launch multiple times for complex operations. Use for complex memory operations beyond simple create/retrieve.
-model: openai/gpt-5
+model: openai/gpt-5.1
 max_output_tokens: 3500
 parallel_tool_calls: false
 temperature: 0.2

@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-5-final-ui
 description: Writes event model documentation directly using Write/Edit tools. Step 5 - Defines final UI screens and wireframes.
-model: openai/gpt-5-mini
+model: openai/gpt-5.1-mini
 mode: subagent
 tools:
   write: true

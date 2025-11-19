@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-8-event-data
 description: Writes event model documentation directly using Write/Edit tools. Step 8 - Defines event data fields with domain types.
-model: openai/gpt-5-mini
+model: openai/gpt-5.1-mini
 mode: subagent
 tools:
   write: true

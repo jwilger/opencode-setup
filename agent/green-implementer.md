@@ -1,7 +1,7 @@
 ---
 name: green-implementer
 description: Writes minimal implementations to make failing tests pass following Kent Beck's TDD. Writes implementation code directly using Write/Edit tools.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true

@@ -1,7 +1,7 @@
 ---
 name: source-control-agent (deprecated)
 description: Legacy prompt replaced by slash commands for git/gh/glab workflows.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: false

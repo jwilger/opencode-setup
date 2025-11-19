@@ -1,7 +1,7 @@
 ---
 name: design-system-architect
 description: Writes STYLE_GUIDE.md documentation directly using Write/Edit tools. Creates design system using Atomic Design methodology, focusing on design patterns and visual specifications.
-model: openai/gpt-5-mini
+model: openai/gpt-5.1-mini
 max_output_tokens: 3000
 parallel_tool_calls: false
 temperature: 0

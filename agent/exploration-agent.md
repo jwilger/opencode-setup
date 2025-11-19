@@ -1,7 +1,7 @@
 ---
 name: exploration-agent
 description: Fast codebase exploration agent for understanding project structure, finding files, and searching code. Supports multi-step exploration workflows - launch multiple times with follow-up questions. Use when exploring unfamiliar code, finding patterns, or answering questions about codebase organization. Specify thoroughness level - quick, medium, or very thorough.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true

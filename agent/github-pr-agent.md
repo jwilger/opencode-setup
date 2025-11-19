@@ -1,7 +1,7 @@
 ---
 name: github-pr-agent (deprecated)
 description: Legacy prompt retained for historical context. GitHub PR operations now run via slash commands executed by the build agent.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: false

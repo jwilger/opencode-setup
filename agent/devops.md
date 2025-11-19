@@ -1,7 +1,7 @@
 ---
 name: devops
 description: Handles infrastructure, deployment, CI/CD, build configuration, and developer tooling tasks. Creates configurations that don't require the strict TDD cycle of application code.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true

@@ -1,7 +1,7 @@
 ---
 name: dependency-management
 description: Manages project dependencies using platform-appropriate tooling (cargo, uv, npm, pnpm). Ensures latest compatible versions, security compliance, and proper dependency resolution across all languages.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true

@@ -1,7 +1,7 @@
 ---
 name: rust-domain-model-expert
 description: Creates Rust domain types with nutype to maximize compile-time safety and make illegal states unrepresentable. Writes type definitions directly using Write/Edit tools.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true

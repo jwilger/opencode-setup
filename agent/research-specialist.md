@@ -1,7 +1,7 @@
 ---
 name: research-specialist
 description: Performs deep research on topics without modifying system state. Records findings in knowledge graph memory and returns summaries with memory node references to preserve context in calling agent.
-model: openai/gpt-5
+model: openai/gpt-5.1
 max_output_tokens: 3500
 parallel_tool_calls: false
 temperature: 0.2

@@ -1,7 +1,7 @@
 ---
 name: mutation-testing-agent
 description: Executes mutation testing to verify test suite quality and reports mutation score. Enforces ≥80% mutation score requirement. Supports multi-module testing - launch multiple times for additional modules. Works with cargo-mutants for Rust and similar tools for other languages. Quality gate for PR creation.
-model: openai/gpt-5-codex
+model: openai/gpt-5.1-codex
 mode: subagent
 tools:
   write: true
