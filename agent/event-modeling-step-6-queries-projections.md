@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-6-queries-projections
 description: Writes event model documentation directly using Write/Edit tools. Step 6 - Defines queries and projections for UI screens.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 mode: subagent
 tools:
   write: true

@@ -1,7 +1,7 @@
 ---
 name: requirements-analyst
 description: Writes requirements documentation directly using Write/Edit tools. Helps define WHAT software should do and WHY through collaborative documentation with user.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 max_output_tokens: 3000
 parallel_tool_calls: false
 temperature: 0

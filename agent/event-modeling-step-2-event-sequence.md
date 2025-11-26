@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-2-event-sequence
 description: Writes event model documentation directly using Write/Edit tools. Step 2 - Defines event sequences working backwards from goal.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 mode: subagent
 tools:
   write: true

@@ -1,7 +1,7 @@
 ---
 name: event-modeling-architect
 description: Event modeling specialist focused on the technical architecture. Reviews flows, updates artifacts, and collaborates with the main conversation and user to refine scenarios.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 max_output_tokens: 3000
 parallel_tool_calls: false
 temperature: 0

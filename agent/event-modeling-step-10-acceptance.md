@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-10-acceptance
 description: Writes event model documentation directly using Write/Edit tools. Step 10 - Creates Gherkin acceptance criteria for commands.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 mode: subagent
 tools:
   write: true

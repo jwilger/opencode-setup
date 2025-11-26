@@ -1,7 +1,7 @@
 ---
 name: ux-consultant
 description: UX collaboration specialist. Evaluates experience quality, updates design docs, and partners with the main conversation and user on improvements.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 max_output_tokens: 3000
 parallel_tool_calls: false
 temperature: 0

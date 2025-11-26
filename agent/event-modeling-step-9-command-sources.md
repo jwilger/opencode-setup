@@ -1,7 +1,7 @@
 ---
 name: event-modeling-step-9-command-sources
 description: Writes event model documentation directly using Write/Edit tools. Step 9 - Documents command data sources.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 mode: subagent
 tools:
   write: true

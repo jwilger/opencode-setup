@@ -1,7 +1,7 @@
 ---
 name: adr-writer
 description: Writes ADR documentation directly using Write/Edit tools. Helps analyze decisions and structure rationale with user through collaborative documentation.
-model: openai/gpt-5.1-mini
+model: openai/gpt-5-mini
 mode: subagent
 tools:
   write: true
