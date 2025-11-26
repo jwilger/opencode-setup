@@ -22,7 +22,7 @@ Preamble
 - Events must represent durable state intended for persistence; UI-only transitions belong in wireframes/state diagrams.
 
 4) Collaboration
-- Follow `instructions/COLLABORATION_PROTOCOLS.md`: make focused changes, pause for review, re-read files to acknowledge updates.
+- Follow `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`: make focused changes, pause for review, re-read files to acknowledge updates.
 - Answer and remove QUESTION comments after resolving them.
 - Store long-form research in Memento (memory-intelligence agent) and summarize key points in the main thread.
 
@@ -49,7 +49,7 @@ Preamble
 - Manual git write commands outside the slash workflows are forbidden for subagents; ask the main conversation for guidance.
 
 8) Documentation & Processes
-- Process handbooks live under `instructions/`; load files lazily (only what’s relevant: e.g., `DOMAIN_MODELING.md`, `TDD_WORKFLOW.md`).
+- Process handbooks live under `~/.config/opencode/instructions/`; load files lazily (only what's relevant: e.g., `DOMAIN_MODELING.md`, `TDD_WORKFLOW.md`).
 - ADRs record decisions and rationale only—implementation details belong in code and tests driven by TDD.
 - `docs/ARCHITECTURE.md` must reflect every ADR status change.
 
@@ -78,10 +78,10 @@ Preamble
   - Use facilitator commands for phase transitions and load their referenced instruction files when needed.
 
 Concise reference: facilitator commands → required docs
-- /analyze → `instructions/STORY_PLANNING.md`, `instructions/COLLABORATION_PROTOCOLS.md`
-- /model   → `instructions/EVENT_MODELING.md`, `instructions/EVENT_MODEL_TEMPLATE.md`
-- /architect → `instructions/ADR_TEMPLATE.md`, `docs/ARCHITECTURE.md` (read current)
-- /plan    → `instructions/STORY_PLANNING.md`, `instructions/DESIGN_SYSTEM.md`
-- /tdd     → `instructions/TDD_WORKFLOW.md`, `instructions/DOMAIN_MODELING.md`, `instructions/COLLABORATION_PROTOCOLS.md`
+- /analyze → `~/.config/opencode/instructions/STORY_PLANNING.md`, `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`
+- /model   → `~/.config/opencode/instructions/EVENT_MODELING.md`, `~/.config/opencode/instructions/EVENT_MODEL_TEMPLATE.md`
+- /architect → `~/.config/opencode/instructions/ADR_TEMPLATE.md`, `docs/ARCHITECTURE.md` (read current)
+- /plan    → `~/.config/opencode/instructions/STORY_PLANNING.md`, `~/.config/opencode/instructions/DESIGN_SYSTEM.md`
+- /tdd     → `~/.config/opencode/instructions/TDD_WORKFLOW.md`, `~/.config/opencode/instructions/DOMAIN_MODELING.md`, `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`
 
 Be predictable, ask one clear question at a time, and store significant decisions in Memento with project metadata.

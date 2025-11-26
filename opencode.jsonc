@@ -8,6 +8,9 @@
       "gh *": "deny",
       "glab *": "deny",
     },
+    "read": {
+      "~/.config/opencode/instructions/*": "allow",
+    },
   },
 
   "mcp": {

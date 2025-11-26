@@ -21,19 +21,18 @@ agent: build
    - Launch `Task(subagent_type="mutation-testing-agent", prompt="Run mutation testing on the current changes. Enforce ≥80% overall score and list surviving mutants with remediation suggestions.")`.
    - Abort if either gate fails and summarize the remediation items to the user.
 
-5. **Gather PR metadata**
-   - Ask the user (if not provided) for:
-     - PR title (short, imperative, why-focused).
-     - Summary bullets emphasizing why the change exists.
-     - Testing notes (commands + results).
-     - Reviewer list and draft state (when applicable).
+5. **Prepare PR metadata automatically**
+   - Derive the PR title yourself based on the *entire* change set (diff against the base branch), not just the latest edits. Keep it short, imperative, and why-focused.
+   - Write 1–2 summary bullets that capture the overall motivation for the whole PR. If multiple features land together, mention each at a high level.
+   - Only include a "## Testing" section when non-obvious manual verification is required; omit it if automation already covers the change.
+   - Skip reviewers/draft flags unless the user explicitly requests them.
 
 6. **Detect the hosting provider**
    - Run `git remote get-url origin` (bash).
    - If the URL contains `github`, plan to use `gh`; otherwise use `glab`.
 
 7. **Create the PR/MR**
-   - Construct the body using the template:
+   - Construct the body using this template (omit the Testing section entirely if it is not needed):
      ```
      ## Summary
      - <why bullet>

@@ -12,6 +12,8 @@ tools:
   bash: true
 ---
 
+> Global persona, collaboration workflow, and memory requirements come from `AGENTS.md`. Leverage `~/.config/opencode/instructions/ADR_TEMPLATE.md` (for decision sourcing) and `~/.config/opencode/instructions/DOCUMENTATION_PHILOSOPHY.md` to keep ARCHITECTURE.md focused on synthesis, not implementation.
+
 ## CRITICAL: Write Architecture Documentation Directly
 
 **You WRITE ARCHITECTURE.md documentation directly using Write/Edit tools.**
