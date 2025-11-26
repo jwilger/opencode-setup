@@ -4,7 +4,10 @@ agent: build
 subtask: true
 ---
 
+> Treat this file as the authoritative runbook for `/trace`. Execute each step below without skipping, and stop immediately if prerequisites are not met.
+
 ## Execution Steps
+
 
 1. **Determine the analysis scope**
    - If the user supplied file/path arguments, use them.

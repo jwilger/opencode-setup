@@ -4,7 +4,10 @@ agent: build
 subtask: true
 ---
 
+> Treat this file as the authoritative runbook for `/mutate`. Execute each step exactly as written to enforce the mutation-testing gate.
+
 ## Execution Steps
+
 
 1. **Verify the test suite passes**
    - Ask the user for the command they use to run tests (if not obvious from project context).

@@ -3,7 +3,10 @@ description: Create a GitHub or GitLab pull/merge request with required quality 
 agent: build
 ---
 
+> Treat this file as the authoritative runbook for `/pr:create`. Execute each step in sequence; do not treat the checklist as optional context.
+
 ## Execution Steps
+
 
 1. **Confirm a clean working tree**
    - Run `git status -sb` (bash) and show the output.
@@ -22,7 +25,10 @@ agent: build
    - Abort if either gate fails and summarize the remediation items to the user.
 
 5. **Prepare PR metadata automatically**
-   - Derive the PR title yourself based on the *entire* change set (diff against the base branch), not just the latest edits. Keep it short, imperative, and why-focused.
+   - If the user supplies a title or body when invoking `/pr:create`, treat it as a **hint or constraint**, not the final text.
+     - When the user says "use this exact title/body", respect it verbatim.
+     - Otherwise, refine or rewrite it to be concise, why-focused, and consistent with the actual diff.
+   - In all cases, derive the final PR title from the *entire* change set (diff against the base branch), not just the latest edits. Keep it short, imperative, and why-focused.
    - Write 1–2 summary bullets that capture the overall motivation for the whole PR. If multiple features land together, mention each at a high level.
    - Only include a "## Testing" section when non-obvious manual verification is required; omit it if automation already covers the change.
    - Skip reviewers/draft flags unless the user explicitly requests them.

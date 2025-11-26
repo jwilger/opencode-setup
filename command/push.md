@@ -3,7 +3,10 @@ description: Push the current branch to its remote with safety checks.
 agent: build
 ---
 
+> Treat this file as the authoritative runbook for `/push`. Execute all checks sequentially and stop if any prerequisite fails.
+
 ## Execution Steps
+
 
 1. **Resolve remote and branch**
    - Run `git rev-parse --abbrev-ref HEAD` (bash) to identify the current branch.

@@ -3,14 +3,19 @@ description: Stage-aware git commit helper that enforces "why"-first messages an
 agent: build
 ---
 
+> Treat this file as the authoritative runbook for `/commit`. Execute every step in order and do not skip prompts or confirmations unless explicitly instructed.
+
 ## Execution Steps
 
+
 1. **Resolve the commit message**
-   - If the user passed an argument to `/commit`, use it verbatim.
-   - Otherwise:
+   - If the user passed an argument to `/commit`, treat it as a **hint** (or explicit constraint) rather than a final message.
+     - When the user says "use this exact message", respect it verbatim.
+     - Otherwise, refine or rewrite it to be a concise, why-focused message that reflects the staged diff.
+   - In all cases, you MUST review the staged diff before finalizing the message:
      1. Run `git status -sb` (bash) and show the output.
      2. Run `git diff --staged --stat` (bash) and show the summary.
-     3. Draft a why-focused message from the diff context. If the motivation is still unclear, ask the user directly in the main conversation and wait for their answer before continuing.
+     3. Draft or refine a why-focused message from the diff context. If the motivation is still unclear, ask the user directly in the main conversation and wait for their answer before continuing.
 
 2. **Handle unstaged/untracked changes before committing**
    - Run `git status -sb` (bash) and display the result.
@@ -21,6 +26,7 @@ agent: build
      - `proceed-staged`: Continue using only what is currently staged (may be empty).
      - `stash-and-proceed [message]`: Run `git stash push -u -m "<message-or-'commit-helper'>"` (bash) to stash all unstaged/untracked changes and proceed with only staged files.
      - `cancel`: Abort without committing.
+   - Never stage files the user has explicitly excluded; respect instructions to only commit certain files or paths.
    - After performing the selected action (unless `cancel`), run `git status -sb` (bash) again to show the new state.
    - If nothing is staged after the selected action and the user did not choose `proceed-staged`, ask once more whether to `stage-all`, `stage-tracked`, `stage-select`, `proceed-staged`, or `cancel`. If `proceed-staged` is chosen with an empty stage, stop with a clear message that there is nothing to commit.
 

@@ -13,7 +13,7 @@ Preamble
 2) Sequential Workflow
 - Phases: Requirements → Event Modeling → ADRs → Architecture → Design System → Story Planning → TDD Core Loop → Acceptance Validation.
 - Never skip phases; if requirements change, rewind to the earliest impacted phase.
-- Use facilitator commands for collaborative phases: `/analyze`, `/model`, `/architect`, `/plan`, `/tdd`.
+- The primary agent (typically Build or Plan) is responsible for facilitating each phase by loading the relevant instruction files and delegating to subagents as needed; there are no dedicated facilitator slash commands.
 
 3) Command–Event Discipline
 - Each user-facing command should emit exactly one goal event in normal flow.
@@ -33,6 +33,7 @@ Preamble
 - Research agents (`research-specialist`, `memory-intelligence-agent`): `openai/gpt-5.1`; escalate to `reasoning-specialist` (`openai/o4-mini`) when needed.
 - Summarization: `openai/gpt-5.1-nano`.
 - Escalate manually on reasoning bottlenecks—request the reasoning-specialist rather than overloading lower-tier models.
+- Use `research-specialist` when you suspect documentation drift, need external validation, or require broad landscape scans; use `reasoning-specialist` for deep architecture/algorithmic trade-off analysis once you have enough local context.
 
 6) Quality Gates
 - Follow TRACE: Type-first, Readability, Atomic scope, Cognitive budget, Essential only.
@@ -54,7 +55,7 @@ Preamble
 - `docs/ARCHITECTURE.md` must reflect every ADR status change.
 
 9) MCP & Tooling
-- Workspace expects `memento` and `time` MCP servers to be available; run `/init` after copying configs so OpenCode can register them.
+- Workspace ships with the global `memento` MCP server enabled; project-specific configs can add more servers if needed. After copying configs, run `/init` so OpenCode registers the active servers.
 - Default permissions: build agent has full tool access; plan agent is read-only (write/edit/bash disabled by default). Adjust per project if required.
 
 10) User Interaction
@@ -70,18 +71,18 @@ Preamble
 - Non‑negotiable constraints:
   - No direct implementation of code in the main conversation—delegate via Task to specialists (red-tdd-tester, green-implementer, domain experts, technical-documentation-writer).
   - Follow the Phase workflow strictly; do not skip gates or assume prior work.
-  - MEMORY PROTOCOL: Temporal anchoring first—call the time tool to anchor all temporal refs before work; then load semantic/context memory as required.
+  - MEMORY PROTOCOL: Temporal anchoring first—run the system `date -u +"%Y-%m-%dT%H:%M:%SZ"` command (bash) before work, then load semantic/context memory as required.
   - Personal verification required: facilitator must personally verify builds, tests, and commits (run build/tests and git status) before advancing phases or merging.
   - Integration tests for third‑party integrations are required (no mocks) before marking a story complete.
   - File edits: writing/editing Markdown (.md) is allowed here, but prefer the technical-documentation-writer for broad doc work.
   - If conflicts arise between documents, escalate rather than guessing—do not make unilateral architectural decisions.
-  - Use facilitator commands for phase transitions and load their referenced instruction files when needed.
+  - For phase transitions, explicitly load the relevant instruction files (see mapping below) and narrate the phase change in the main conversation; no dedicated facilitator slash commands are required.
 
-Concise reference: facilitator commands → required docs
-- /analyze → `~/.config/opencode/instructions/STORY_PLANNING.md`, `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`
-- /model   → `~/.config/opencode/instructions/EVENT_MODELING.md`, `~/.config/opencode/instructions/EVENT_MODEL_TEMPLATE.md`
-- /architect → `~/.config/opencode/instructions/ADR_TEMPLATE.md`, `docs/ARCHITECTURE.md` (read current)
-- /plan    → `~/.config/opencode/instructions/STORY_PLANNING.md`, `~/.config/opencode/instructions/DESIGN_SYSTEM.md`
-- /tdd     → `~/.config/opencode/instructions/TDD_WORKFLOW.md`, `~/.config/opencode/instructions/DOMAIN_MODELING.md`, `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`
+Concise reference: phases → required docs
+- Analyze requirements → `~/.config/opencode/instructions/STORY_PLANNING.md`, `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`
+- Event modeling → `~/.config/opencode/instructions/EVENT_MODELING.md`, `~/.config/opencode/instructions/EVENT_MODEL_TEMPLATE.md`
+- Architecture → `~/.config/opencode/instructions/ADR_TEMPLATE.md`, `docs/ARCHITECTURE.md` (read current)
+- Design system / UI → `~/.config/opencode/instructions/STORY_PLANNING.md`, `~/.config/opencode/instructions/DESIGN_SYSTEM.md`
+- TDD / Implementation → `~/.config/opencode/instructions/TDD_WORKFLOW.md`, `~/.config/opencode/instructions/DOMAIN_MODELING.md`, `~/.config/opencode/instructions/COLLABORATION_PROTOCOLS.md`
 
 Be predictable, ask one clear question at a time, and store significant decisions in Memento with project metadata.

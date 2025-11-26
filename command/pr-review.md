@@ -4,7 +4,10 @@ agent: build
 subtask: true
 ---
 
+> Treat this file as the authoritative runbook for `/pr:review`. Execute each step in order and obtain any missing information before moving on.
+
 ## Execution Steps
+
 
 1. **Resolve the PR/MR identifier and desired action**
    - Ask the user for the review action (`approve`, `request-changes`, or `comment`) if it was not provided.

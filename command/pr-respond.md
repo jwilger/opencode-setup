@@ -4,7 +4,10 @@ agent: build
 subtask: true
 ---
 
+> Treat this file as the authoritative runbook for `/pr:respond`. Execute every step below, iterating through each unresolved comment without skipping.
+
 ## Execution Steps
+
 
 1. **Resolve the comment context**
    - Detect the hosting provider by running `git remote get-url origin` (bash).

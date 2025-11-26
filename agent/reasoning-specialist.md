@@ -2,7 +2,7 @@
 name: reasoning-specialist
 description: High-depth reasoning specialist for complex analytical tasks
 mode: subagent
-model: openai/o4
+model: openai/o4-mini
 temperature: 0
 tools:
   write: false
