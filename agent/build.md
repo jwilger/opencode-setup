@@ -2,7 +2,7 @@
 name: build
 description: Marvin build agent with full tool access
 mode: primary
-model: openai/gpt-5.1-codex-medium
+model: openai/gpt-5.1-codex
 temperature: 0
 tools:
   write: true

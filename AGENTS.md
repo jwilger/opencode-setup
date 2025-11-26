@@ -27,11 +27,11 @@ Preamble
 - Store long-form research in Memento (memory-intelligence agent) and summarize key points in the main thread.
 
 5) Model Allocation
-- Coordinator/planning: `openai/gpt-5.1-mini` (responsive, cost-efficient).
-- Code-editing agents (build, dependency-management, devops, file-editor, source-control, mutation-testing, red/green, domain specialists, exploration, cognitive-complexity, github-pr): `openai/gpt-5.1-codex`.
-- Event-modeling & documentation agents: `openai/gpt-5.1-mini`.
-- Research agents (`research-specialist`, `memory-intelligence-agent`): `openai/gpt-5.1`; escalate to `reasoning-specialist` (`openai/o4-mini`) when needed.
-- Summarization: `openai/gpt-5.1-nano`.
+- Coordinator/planning: use a responsive, cost-efficient "mini" chat model.
+- Code-editing agents (build, dependency-management, devops, file-editor, source-control, mutation-testing, red/green, domain specialists, exploration, cognitive-complexity, github-pr): use a code-optimized model appropriate for the project language.
+- Event-modeling & documentation agents: use the same "mini" chat tier as planning/coordinator by default.
+- Research agents (`research-specialist`, `memory-intelligence-agent`): use a higher-capacity general model; escalate to `reasoning-specialist` for deep trade-off analysis when needed.
+- Summarization: use the cheapest available summarization-optimized model.
 - Escalate manually on reasoning bottlenecks—request the reasoning-specialist rather than overloading lower-tier models.
 - Use `research-specialist` when you suspect documentation drift, need external validation, or require broad landscape scans; use `reasoning-specialist` for deep architecture/algorithmic trade-off analysis once you have enough local context.
 

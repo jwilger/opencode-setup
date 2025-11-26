@@ -1,7 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "openai/gpt-5.1-mini",
-  "small_model": "openai/gpt-5.1-nano",
+  "model": "openai/gpt-5.1",
+  "small_model": "openai/gpt-5.1-mini",
   "instructions": ["AGENTS.md"],
   "permission": {
     "bash": {
@@ -37,7 +37,7 @@
       "git rm": "allow",
       "git rm *": "allow",
       "git stash": "allow",
-      "git stash *": "allow"
+      "git stash *": "allow",
     },
     "webfetch": "ask",
     "doom_loop": "ask",
@@ -51,55 +51,6 @@
     "memento": {
       "type": "local",
       "command": ["npx", "-y", "@gannonh/memento-mcp@0.3.9"],
-    }
-  },
-
-  "provider": {
-    "openai": {
-      "options": {
-        "tools": [{ "type": "web_search_preview" }],
-      },
-      "models": {
-        "gpt-5.1-low": {
-          "id": "gpt-5.1",
-          "options": { "reasoningEffort": "low" },
-        },
-        "gpt-5.1-medium": {
-          "id": "gpt-5.1",
-          "options": { "reasoningEffort": "medium" },
-        },
-        "gpt-5.1-high": {
-          "id": "gpt-5.1",
-          "options": { "reasoningEffort": "high" },
-        },
-        "gpt-5.1-mini-low": {
-          "id": "gpt-5.1-mini",
-          "options": { "reasoningEffort": "low" },
-        },
-        "gpt-5.1-mini-medium": {
-          "id": "gpt-5.1-mini",
-          "options": { "reasoningEffort": "medium" },
-        },
-        "gpt-5.1-mini-high": {
-          "id": "gpt-5.1-mini",
-          "options": { "reasoningEffort": "high" },
-        },
-        "gpt-5.1-codex-low": {
-          "id": "gpt-5.1-codex",
-          "options": { "reasoningEffort": "low" },
-        },
-        "gpt-5.1-codex-medium": {
-          "id": "gpt-5.1-codex",
-          "options": { "reasoningEffort": "medium" },
-        },
-        "gpt-5.1-codex-high": {
-          "id": "gpt-5.1-codex",
-          "options": { "reasoningEffort": "high" },
-        },
-        "o4-mini": {
-          "id": "o4-mini"
-        },
-       },
     },
   },
 }
