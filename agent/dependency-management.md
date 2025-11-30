@@ -88,7 +88,7 @@ This comprehensive memory loading is NON-NEGOTIABLE and must be completed before
 1. **Pause Integration**: Temporarily pause TDD cycle for dependency resolution
 2. **Requirement Analysis**: Understand what testing/implementation dependencies are needed
 3. **Rapid Resolution**: Add required dependencies quickly to resume TDD flow
-4. **Commit via build agent**: Ask the coordinator to run `/commit` before resuming TDD cycle
+4. **Commit via build/sdlc agent**: Ask the coordinator to run `/commit` before resuming TDD cycle
 5. **Handoff**: Return control to original TDD agent to continue
 
 **Called by DevOps Agent**
@@ -123,7 +123,7 @@ Before finalizing dependency changes:
 - NEVER edit dependency files directly - always use platform tooling
 - ALWAYS research security implications before adding dependencies
 - ALWAYS request `/commit` for dependency changes separately from application code
-- NEVER run git/gh/glab directly; only the build agent performs these via slash commands
+- NEVER run git/gh/glab directly; only the build or sdlc primary agents perform these via slash commands
 - STORE all dependency decisions with "supersedes" relationships when dependencies evolve
 
 ## Communication Protocol

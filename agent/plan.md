@@ -32,4 +32,4 @@ Provide rapid, read-only analysis: explore the codebase, documentation, and proc
 2. Inspect the necessary files or documentation with read-only tools, keeping notes on gaps and risks.
 3. Organize findings into actionable plans, outlining which specialized agents or phase commands are needed next.
 4. Update the todo list / memory graph with decisions and outstanding questions.
-5. Hand results back to the main conversation so the build agent can act with minimal re-discovery.
+5. Hand results back to the main conversation so the build or sdlc primary agent can act with minimal re-discovery.

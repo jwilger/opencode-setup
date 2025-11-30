@@ -11,7 +11,7 @@ tools:
 
 # Deprecated: Source Control Agent
 
-All git and PR operations now run through the dedicated slash commands executed by the build agent:
+All git and PR operations now run through the dedicated slash commands executed by the build or sdlc primary agents:
 
 - `/commit`
 - `/push`
