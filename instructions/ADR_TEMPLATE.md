@@ -72,6 +72,8 @@ Each ADR should follow this structure:
 - **rejected**: Decision considered but not approved
 - **superseded**: Decision replaced by a newer ADR (reference replacement ADR)
 
+Once an ADR reaches **accepted**, treat the record as immutable history. Do **not** rewrite the context, decision, rationale, or consequences after acceptance. If architectural intent changes, draft a new ADR and mark the prior one as **superseded** while referencing the replacement ADR. The only permissible post-acceptance edit is this status/state change.
+
 ### Context
 - What forces are at play (technical, political, social, project constraints)?
 - What is the issue we're trying to address?
@@ -206,6 +208,16 @@ Use hexagonal architecture with ports and adapters.
 - **Consistency**: Ensure all accepted ADRs are reflected in architecture
 
 The ARCHITECTURE.md file is a **projection** of all accepted ADRs into a cohesive system design.
+
+## Relationship Between ADRs and ARCHITECTURE.md
+
+Think of ADRs as an event stream and ARCHITECTURE.md as the projection built by applying those events in order. This means:
+
+- **ADRs capture the "why"**: they are append-only historical records explaining the forces, trade-offs, and rationale behind each architectural decision.
+- **ARCHITECTURE.md captures the "what"**: it is the authoritative, up-to-date articulation of the current architecture after every accepted ADR has been applied.
+- **ARCHITECTURE.md stands alone**: do not reference ADR numbers inside the document; anyone should be able to understand our architecture without cross-referencing ADR files.
+- **Implementation teams read ARCHITECTURE.md first**: during planning, story refinement, and development we treat ARCHITECTURE.md as the single source of truth for "what to build." Consult ADRs only when you need to understand *why* a rule exists.
+- **Historical integrity matters**: once an ADR is accepted and ARCHITECTURE.md is updated, the ADR remains untouched (except for status changes to `superseded` that point to the replacement ADR).
 
 ## Status Lifecycle
 

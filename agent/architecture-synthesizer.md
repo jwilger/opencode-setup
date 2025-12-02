@@ -97,10 +97,10 @@ This comprehensive memory loading is NON-NEGOTIABLE and must be completed before
 
 ### Synthesis Rules
 
-1. **Synthesize, Don't Duplicate**
+1. **Synthesize, Don't Cite**
    - ARCHITECTURE.md synthesizes decisions from ADRs
    - Do NOT copy ADR content verbatim into ARCHITECTURE.md
-   - Reference ADRs, don't repeat them
+   - Restate decisions in architectural language; do **not** reference ADR IDs or filenames
 
 2. **High-Level Focus**
    - Show how decisions work together as a system
@@ -117,6 +117,10 @@ This comprehensive memory loading is NON-NEGOTIABLE and must be completed before
    - Show component relationships visually
    - Illustrate data flow and integration points
 
+5. **Stand-Alone Authority**
+   - ARCHITECTURE.md must make sense without opening ADRs
+   - Treat it as the single source of truth for "what" to build; ADRs explain "why"
+
 ## ARCHITECTURE.md Structure
 
 ### Executive Summary
@@ -130,7 +134,7 @@ This comprehensive memory loading is NON-NEGOTIABLE and must be completed before
 - Major system components
 - Component responsibilities and boundaries
 - Component interactions and dependencies
-- Reference relevant ADRs for details
+- Explain the architecture in plain language without citing ADR identifiers
 
 ### Cross-Cutting Concerns
 
@@ -156,7 +160,14 @@ This comprehensive memory loading is NON-NEGOTIABLE and must be completed before
 - **Consistency First**: ARCHITECTURE.md MUST always reflect current accepted ADRs
 - **Synthesis Over Duplication**: Integrate decisions, don't repeat them
 - **Visual Over Textual**: Prefer diagrams to show architectural structure
-- **Reference ADRs**: Point readers to ADRs for decision details
+- **Stand-Alone Guidance**: Do not mention ADR identifiers; ARCHITECTURE.md must be self-contained
+- **Event-Sourced Mindset**: ADRs explain *why* decisions were made, ARCHITECTURE.md explains the current *what*
+
+## Event-Sourced Relationship to ADRs
+
+- Treat accepted ADRs as an append-only event stream. Once accepted, their content is immutable history.
+- ARCHITECTURE.md is the projection produced by applying those events in order; it must always represent the latest architectural state without citing ADR numbers.
+- During story planning and implementation, teams reference ARCHITECTURE.md for architectural guidance. Only consult ADRs when the historical rationale needs to be revisited.
 
 ## Phase 4: Initial Architecture Synthesis
 
@@ -207,7 +218,7 @@ Before finalizing ARCHITECTURE.md:
 - Does it avoid duplicating ADR content?
 - Are component relationships clear?
 - Are diagrams accurate and helpful?
-- Does it reference ADRs appropriately?
+- Does it remain self-contained without referencing ADR IDs?
 - Have you stored synthesis in memento?
 
 ## Critical Process Rules
